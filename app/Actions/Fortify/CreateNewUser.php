@@ -25,6 +25,16 @@ class CreateNewUser implements CreatesNewUsers
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'CPF' => ['required', 'string', 'max:11', 'unique:users'],
+            'RG' => ['required', 'string', 'max:11'],
+            'birth_date' => ['string', 'max:10'],
+            'address' => ['string'],
+            'number' => ['string'],
+            'neighborhood' => ['string'],
+            'postal_code' => ['string', 'max:9'],
+            'city' => ['string'],
+            'state' => ['string'],
+
             'password' => $this->passwordRules(),
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
         ])->validate();
@@ -33,6 +43,15 @@ class CreateNewUser implements CreatesNewUsers
             return tap(User::create([
                 'name' => $input['name'],
                 'email' => $input['email'],
+                'CPF' => $input['CPF'],
+                'RG' => $input['RG'],
+                'birth_date' => $input['birth_date'],
+                'address' => $input['address'],
+                'number' => $input['number'],
+                'neighborhood' => $input['neighborhood'],
+                'postal_code' => $input['postal_code'],
+                'city' => $input['city'],
+                'state' => $input['state'],
                 'password' => Hash::make($input['password']),
             ]), function (User $user) {
                 $this->createTeam($user);
