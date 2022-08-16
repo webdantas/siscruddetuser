@@ -65,8 +65,8 @@ class UserDatatables extends LivewireDatatable
             Column::name('state')
                 ->label('Estado'),
 
-            // Column::name('salary')
-            //     ->label('Salario'),
+            Column::name('salary')
+                ->label('Salario'),
 
             DateColumn::name('birth_date')
                 ->label('Aniversário')

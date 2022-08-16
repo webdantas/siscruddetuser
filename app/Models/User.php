@@ -20,13 +20,22 @@ class User extends Authenticatable
     use Notifiable;
     use TwoFactorAuthenticatable;
 
+    protected $primaryKey = "id";
+    protected $table = "users";
+    public $incrementing = true;
+
+    public function salary()
+    {
+        return $this->hasOne(Salary::class, 'userid', 'id');
+    }
+
     /**
      * The attributes that are mass assignable.
      *
      * @var string[]
      */
     protected $fillable = [
-        'name', 'email', 'password', 'CPF', 'RG', 'birth_date', 'address', 'number', 'neighborhood', 'postal_code', 'city', 'state',
+        'name', 'email', 'password', 'CPF', 'RG', 'birth_date', 'address', 'number', 'neighborhood', 'postal_code', 'city', 'state', 'salary',
     ];
 
     /**
