@@ -34,6 +34,7 @@ class CreateNewUser implements CreatesNewUsers
             'postal_code' => ['string', 'max:9'],
             'city' => ['string'],
             'state' => ['string'],
+            'salary' => ['string'],
 
             'password' => $this->passwordRules(),
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
@@ -52,6 +53,7 @@ class CreateNewUser implements CreatesNewUsers
                 'postal_code' => $input['postal_code'],
                 'city' => $input['city'],
                 'state' => $input['state'],
+                'salary' => $input['salary'],
                 'password' => Hash::make($input['password']),
             ]), function (User $user) {
                 $this->createTeam($user);

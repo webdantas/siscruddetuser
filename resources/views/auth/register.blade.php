@@ -65,6 +65,11 @@
             </div>
 
             <div class="mt-4">
+                <x-jet-label for="salary" value="{{ __('Salário') }}" />
+                <x-jet-input id="salary" class="block mt-1 w-full" type="text" name="salary" :value="old('salary')" required />
+            </div>
+
+            <div class="mt-4">
                 <x-jet-label for="password" value="{{ __('Senha') }}" />
                 <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
             </div>
