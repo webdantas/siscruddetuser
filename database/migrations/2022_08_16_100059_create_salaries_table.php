@@ -14,11 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::create('salaries', function (Blueprint $table) {
-        $table->integer('userid')
+        $table->integer('user_id')
             ->unsigned();
-        $table->primary('userid');
+        $table->primary('user_id');
+        $table->integer('id');
         $table->double('salary', 10, 2);
-        $table->foreign('userid')
+        $table->foreign('user_id')
             ->references('id')
             ->on('users');
         $table->timestamps();

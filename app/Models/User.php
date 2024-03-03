@@ -24,9 +24,16 @@ class User extends Authenticatable
     protected $table = "users";
     public $incrementing = true;
 
+    public function builder()
+    {
+        return User::query()
+        ->leftJoin('salaries as s1', 'id', 's1.user_id');
+    }
+
+
     public function salary()
     {
-        return $this->hasOne(Salary::class, 'userid', 'id');
+        return $this->hasOne(Salary::class, 'user_id', 'id');
     }
 
     /**
@@ -35,7 +42,7 @@ class User extends Authenticatable
      * @var string[]
      */
     protected $fillable = [
-        'name', 'email', 'password', 'CPF', 'RG', 'birth_date', 'address', 'number', 'neighborhood', 'postal_code', 'city', 'state', 'salary',
+        'name', 'email', 'password', 'CPF', 'RG', 'birth_date', 'address', 'number', 'neighborhood', 'postal_code', 'city', 'state',
     ];
 
     /**

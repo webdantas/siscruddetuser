@@ -16,11 +16,24 @@ class SalaryController extends Controller
     public function index()
     {
         $salaries = Salary::get();
-
-        return view('livewire.user-datatables', compact('salaries'));
+        //  dd($salaries);
+            return view('livewire.user-datatables', compact('salaries'));
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Salary  $salary
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $salaries = Salary::where($id);
+            // dd($salaries);
+            return view('users', compact('salaries'));
+    }
+
+     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -41,16 +54,6 @@ class SalaryController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Salary  $salary
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Salary $salary)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.

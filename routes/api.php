@@ -1,7 +1,11 @@
 <?php
 
-use Illuminate\Http\Request;
+namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\SalaryController;
+use Illuminate\Http\Request;
 use \App\Models\Salary;
 
 /*
@@ -19,10 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// Route::resource('salary', SalaryController::class);
-
-Route::get('/salary', function () {
-    $salaries = Salary::get();
-
-        return view('livewire.user-datatables', compact('salaries'));
+Route::controller(SalaryController::class)->group(function(){
+    Route::get('/salary', 'index')->name('salary.index');
+    Route::get('/salary/{id}', 'show')->name('salary.show');
 });

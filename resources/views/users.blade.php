@@ -14,10 +14,12 @@
         Laravel Livewire Example - ItSolutionStuff.com
       </div>
       <div class="card-body">
-        <livewire:user-datatables
-            searchable="name, email"
-            exportable
-         />
+      @forelse ($salaries as $salar)
+        <p>Salario: {{ $salar->salary }}</p>
+      @empty
+        <p>Nenhum salário cadastrado ainda</p>
+      @endforelse
+
 
       </div>
     </div>

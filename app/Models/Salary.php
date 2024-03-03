@@ -9,15 +9,15 @@ class Salary extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = "userid";
+    protected $primaryKey = "user_id";
     protected $table = "salaries";
     public $incrementing = false;
 
-    protected $fillable = ['userid', 'salary', 'created_at'];
+    protected $fillable = ['user_id', 'salary', 'created_at'];
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'userid', 'id');
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
 }

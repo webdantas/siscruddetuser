@@ -27,17 +27,16 @@ class UserFactory extends Factory
         return [
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
-            'CPF' => $this->faker->unique();
-            'RG' => $this->faker->unique();
-            'birth_date' => $this->faker->now();
-            'address'=> $this->faker->name();
-            'number' => Str::random(4);
-            'neighborhood' => $this->faker->name();
-            'postal_code' => Str::random(8);
-            'city' => $this->faker->name();
-            'state' => $this->faker->name();
+            'CPF' => $this->faker->unique(),
+            'RG' => $this->faker->unique(),
+            'birth_date' => now(),
+            'address'=> $this->faker->name(),
+            'number' => Str::random(4),
+            'neighborhood' => $this->faker->name(),
+            'postal_code' => Str::random(8),
+            'city' => $this->faker->name(),
+            'state' => $this->faker->name(),
             'email_verified_at' => now(),
-            'salary' => Str::random(4);
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
         ];
